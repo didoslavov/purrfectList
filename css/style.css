@@ -1,4 +1,7 @@
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: 'Courier New', Courier, monospace;
   font-size: 24px;
   margin: 0;
@@ -7,19 +10,19 @@ body {
 }
 
 img {
+  margin-top: 10px;
   width: 200px;
   height: auto;
-  margin-left: 80px;
-  margin-top: 10px;
   border: 1px solid rgb(216, 156, 66);
   border-radius: 100px;
 }
 
 #input-field {
+  display: flex;
   font-family: 'Courier New', Courier, monospace;
   font-size: 15.5px;
   background-color: rgb(240, 238, 234);
-  margin: 10px 0 10px 80px;
+  margin: 10px;
   padding: 1em;
   border: 1px solid rgb(216, 156, 66);
   border-radius: 30px;
@@ -32,32 +35,31 @@ img {
   width: 225px;
   background-color: rgb(216, 156, 66);
   color: whitesmoke;
-  margin: 0 0 10px 80px;
   padding: 0.6em;
   border-radius: 30px;
 }
 
-#del-btn {
-  float: right;
+#del-btn > button {
   background: salmon;
   border: 1px solid black;
   color: whitesmoke;
   border-radius: 10px;
-  padding: 0.5em;
+  padding: 8px 8px;
 }
 
 ul {
   margin: 0;
+  padding: 0;
 }
 
 li {
-  float: left;
+  display: flex;
+  justify-content: space-between;
   list-style-type: none;
   width: 215px;
   background-color: rgb(38, 173, 144);
   color: whitesmoke;
-  margin: 10px 10px 0 40px;
-  padding: 0 200px 200px 200px;
-  padding: 0.2em;
+  margin: 10px;
+  padding: 0.3em;
   border-radius: 10px;
 }

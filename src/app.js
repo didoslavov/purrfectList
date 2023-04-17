@@ -10,16 +10,18 @@ function onAddProduct() {
     li.textContent = input;
     const btn = document.createElement('button');
     btn.textContent = 'Delete';
-    btn.id = 'del-btn';
     btn.addEventListener('click', onDelete);
+    const div = document.createElement('div');
+    div.appendChild(btn);
+    div.id = 'del-btn';
 
-    li.appendChild(btn);
+    li.appendChild(div);
     ulElement.appendChild(li);
     inputElement.value = '';
   }
 }
 
 function onDelete(e) {
-  const liElement = e.target.parentElement;
+  const liElement = e.target.parentElement.parentElement;
   liElement.remove();
 }
