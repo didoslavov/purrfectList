@@ -3,7 +3,6 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 24px;
   margin: 0;
   padding: 0;
   background-color: rgb(240, 238, 234);
@@ -18,9 +17,12 @@ img {
 }
 
 #input-field {
+  text-align: center;
   display: flex;
   font-family: 'Courier New', Courier, monospace;
   font-size: 15.5px;
+  font-weight: bold;
+  color: rgb(112, 102, 102);
   background-color: rgb(240, 238, 234);
   margin: 10px;
   padding: 1em;
@@ -32,6 +34,7 @@ img {
 #add-btn {
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
+  font-weight: bold;
   width: 225px;
   background-color: rgb(216, 156, 66);
   color: whitesmoke;
@@ -40,6 +43,8 @@ img {
 }
 
 #del-btn > button {
+  font-size: 14px;
+  font-weight: bold;
   background: salmon;
   border: 1px solid black;
   color: whitesmoke;
@@ -48,13 +53,16 @@ img {
 }
 
 ul {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 li {
+  font-size: 18px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   list-style-type: none;
   width: 215px;
   background-color: rgb(38, 173, 144);
