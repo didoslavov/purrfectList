@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(240, 238, 234);
+}
+
+img {
+  width: 200px;
+  height: auto;
+  margin-left: 60px;
+  margin-top: 10px;
+  border: 1px solid rgb(216, 156, 66);
+  border-radius: 100px;
+}
+
+#input-field {
+  background-color: rgb(240, 238, 234);
+  margin: 10px 0 10px 50px;
+  padding: 1em;
+  border: 1px solid rgb(216, 156, 66);
+  border-radius: 30px;
+  outline: none;
+}
+
+#add-btn {
+  width: 225px;
+  background-color: rgb(216, 156, 66);
+  color: whitesmoke;
+  margin: 0 0 10px 50px;
+  padding: 1em;
+  border-radius: 30px;
+}
