@@ -1,0 +1,27 @@
+{
+  "name": "listme",
+  "version": "1.0.0",
+  "description": "Simple shopping list app to use with my family",
+  "main": "/src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/didoslavov/listMe.git"
+  },
+  "keywords": [
+    "shoppinglist",
+    "shopping",
+    "add",
+    "products",
+    "shopping",
+    "cart"
+  ],
+  "author": "Deyan Slavov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/didoslavov/listMe/issues"
+  },
+  "homepage": "https://github.com/didoslavov/listMe#readme"
+}
