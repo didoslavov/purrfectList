@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/didoslavov/listMe/issues"
   },
-  "homepage": "https://github.com/didoslavov/listMe#readme"
+  "homepage": "https://github.com/didoslavov/listMe#readme",
+  "dependencies": {
+    "firebase": "^9.19.1"
+  }
 }
