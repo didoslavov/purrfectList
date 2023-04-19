@@ -32,9 +32,11 @@ function onAddProduct() {
 }
 
 function loadProducts(snapshot) {
-  const data = snapshot.val();
+  if (snapshot.exists()) {
+    const data = snapshot.val();
 
-  ulElement.append(...Object.entries(data).map(createListElement));
+    ulElement.append(...Object.entries(data).map(createListElement));
+  }
 }
 
 function createListElement(data) {
@@ -57,7 +59,6 @@ function createListElement(data) {
 }
 
 function onDelete(e) {
-  e.preventDefault();
   const liElement = e.target.parentElement.parentElement;
   const product = ref(database, `products/${liElement.id}`);
 
