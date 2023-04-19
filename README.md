@@ -2,7 +2,7 @@
 
 ### Try it here!
 
-[https://purrfectlist.netlify.app/]()
+https://purrfectlist.netlify.app/
 
 ### Preview
 
