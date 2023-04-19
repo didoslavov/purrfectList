@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js';
-import { getDatabase, ref, push, onValue } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
+import { getDatabase, ref, push, onValue, remove } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
 
 // DON'T FORGET TO CHANGE SEQURITY SETTINGS IN DATABASE LATER !!!
 
@@ -57,8 +57,13 @@ function createListElement(data) {
 }
 
 function onDelete(e) {
+  e.preventDefault();
   const liElement = e.target.parentElement.parentElement;
-  liElement.remove();
+  const product = ref(database, `products/${liElement.id}`);
+
+  remove(product);
+  clearListOnLoad();
+  onValue(productsInDB, loadProducts);
 }
 
 function clearInputField() {
