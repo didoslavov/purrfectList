@@ -1,2 +1,2 @@
-# listMe
+# Purrfect List
 Shopping list app
