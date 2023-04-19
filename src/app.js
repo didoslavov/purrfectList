@@ -1,5 +1,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js';
-import { getDatabase, ref, push } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
+import { getDatabase, ref, push, onValue } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
+
+// DON'T FORGET TO CHANGE SEQURITY SETTINGS IN DATABASE LATER !!!
 
 const appSettings = {
   databaseURL: 'https://listme-5291d-default-rtdb.europe-west1.firebasedatabase.app/',
@@ -16,24 +18,55 @@ addProductBtn.addEventListener('click', onAddProduct);
 
 function onAddProduct() {
   const input = inputElement.value;
-  if (input != '') {
-    push(productsInDB, input);
-    const li = document.createElement('li');
-    li.textContent = input;
-    const btn = document.createElement('button');
-    btn.textContent = 'Delete';
-    btn.addEventListener('click', onDelete);
-    const div = document.createElement('div');
-    div.appendChild(btn);
-    div.id = 'del-btn';
 
-    li.appendChild(div);
+  if (!isEmptyString(input)) {
+    push(productsInDB, input);
+
+    // Fetch data from firebase DB, TO DO... loop through DB entries, create elements and append them to the list
+    const data = getData();
+
+    const li = createListElement(input);
     ulElement.appendChild(li);
-    inputElement.value = '';
+
+    clearInputField();
   }
+}
+
+function getData() {
+  return onValue(productsInDB, function (snapshot) {
+    return snapshot.val();
+  });
+}
+
+function createListElement(input) {
+  const li = document.createElement('li');
+  const btn = document.createElement('button');
+  const div = document.createElement('div');
+
+  li.textContent = input;
+  btn.textContent = 'Delete';
+  btn.addEventListener('click', onDelete);
+  div.appendChild(btn);
+  div.id = 'del-btn';
+
+  li.appendChild(div);
+
+  return li;
 }
 
 function onDelete(e) {
   const liElement = e.target.parentElement.parentElement;
   liElement.remove();
+}
+
+function clearInputField() {
+  inputElement.value = '';
+}
+
+function isEmptyString(input) {
+  if (input == '') {
+    return true;
+  }
+
+  return false;
 }
