@@ -16,34 +16,36 @@ const ulElement = document.getElementById('product-list');
 const inputElement = document.getElementById('input-field');
 addProductBtn.addEventListener('click', onAddProduct);
 
+onValue(productsInDB, loadProducts);
+
 function onAddProduct() {
   const input = inputElement.value;
 
   if (!isEmptyString(input)) {
     push(productsInDB, input);
 
-    // Fetch data from firebase DB, TO DO... loop through DB entries, create elements and append them to the list
-    const data = getData();
-
-    const li = createListElement(input);
-    ulElement.appendChild(li);
+    clearListOnLoad();
+    onValue(productsInDB, loadProducts);
 
     clearInputField();
   }
 }
 
-function getData() {
-  return onValue(productsInDB, function (snapshot) {
-    return snapshot.val();
-  });
+function loadProducts(snapshot) {
+  const data = snapshot.val();
+
+  ulElement.append(...Object.entries(data).map(createListElement));
 }
 
-function createListElement(input) {
+function createListElement(data) {
+  const [id, product] = data;
+
   const li = document.createElement('li');
   const btn = document.createElement('button');
   const div = document.createElement('div');
 
-  li.textContent = input;
+  li.textContent = product;
+  li.id = id;
   btn.textContent = 'Delete';
   btn.addEventListener('click', onDelete);
   div.appendChild(btn);
@@ -61,6 +63,10 @@ function onDelete(e) {
 
 function clearInputField() {
   inputElement.value = '';
+}
+
+function clearListOnLoad() {
+  ulElement.innerHTML = '';
 }
 
 function isEmptyString(input) {
