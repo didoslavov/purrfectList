@@ -1,5 +1,5 @@
 {
-  "name": "listme",
+  "name": "purrfectlist",
   "version": "1.0.0",
   "description": "Simple shopping list app to use with my family",
   "main": "/src/app.js",

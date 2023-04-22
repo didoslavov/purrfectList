@@ -33,8 +33,11 @@ function onAddProduct() {
 function loadProducts(snapshot) {
   if (snapshot.exists()) {
     const data = snapshot.val();
+    console.log(Object.entries(data));
 
     ulElement.replaceChildren(...Object.entries(data).map(createListElement));
+  } else {
+    ulElement.replaceChildren('');
   }
 }
 
