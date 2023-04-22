@@ -7,20 +7,27 @@ const ulElement = document.getElementById('product-list');
 const inputElement = document.getElementById('input-field');
 addProductBtn.addEventListener('click', onAddProduct);
 
+const inputPattern = /^[A-Za-zА-Яа-я0-9 ]*$/;
+
 function render() {
   onValue(productsInDB, loadProducts);
 }
 
 function onAddProduct() {
-  const input = inputElement.value;
+  const input = inputElement.value.trim();
 
-  if (!isEmptyString(input)) {
-    push(productsInDB, input);
-
-    clearListOnLoad();
-    render();
-    clearInputField();
+  if (!inputPattern.test(input)) {
+    return alert('Product must contain only letters and numbers !');
   }
+  if (isEmptyString(input)) {
+    return alert('Product must contain at least one letter or number');
+  }
+
+  push(productsInDB, input);
+
+  clearListOnLoad();
+  render();
+  clearInputField();
 }
 
 function loadProducts(snapshot) {

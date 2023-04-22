@@ -9,7 +9,7 @@ function clearListOnLoad() {
 }
 
 function isEmptyString(input) {
-  if (input == '') {
+  if (input.length == 0) {
     return true;
   }
 
