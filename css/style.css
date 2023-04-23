@@ -129,7 +129,7 @@ nav {
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: rgb(112, 102, 102);
+  background: rgb(255, 255, 255);
   border-radius: 3px;
   z-index: 1;
 }
@@ -146,7 +146,14 @@ nav {
   background-color: rgb(251, 239, 227);
   padding: 10px;
   border-radius: 5px;
-  width: 320px;
+  width: 100%;
+}
+
+.menu.active {
+  display: block;
+  background: none;
+  max-width: 150px;
+  right: 0;
 }
 
 .menu ul {
@@ -180,11 +187,8 @@ nav {
   }
 
   .menu.active {
+    display: block;
     background: none;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: center;
     max-width: 150px;
     right: 0;
   }
