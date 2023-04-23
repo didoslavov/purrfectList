@@ -110,9 +110,12 @@ nav {
   font-size: 1.2em;
 }
 
-.logo {
-  font-weight: bold;
-  font-size: 1.5em;
+.logo img {
+  margin-top: 0 auto;
+  width: 30px;
+  height: auto;
+  border: 1.5px solid rgb(112, 102, 102);
+  border-radius: 100px;
 }
 
 .menu-icon {
@@ -174,11 +177,14 @@ nav {
 }
 
 .menu.active {
-  background: none;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgb(216, 156, 66);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   text-align: center;
+  margin-right: 10px;
   width: 150px;
   right: 0;
 }
@@ -196,14 +202,18 @@ nav {
 }
 
 .menu a {
+  display: block;
   color: rgb(255, 255, 255);
   text-decoration: none;
   text-align: center;
   font-size: 1.2em;
 }
 
-.menu a:hover {
+.menu li:hover a {
   color: rgb(112, 102, 102);
+}
+.menu li:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {
@@ -215,10 +225,15 @@ nav {
   }
 
   .menu.active {
-    display: block;
-    background: none;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgb(216, 156, 66);
     max-width: 150px;
     right: 0;
+  }
+
+  .menu a {
+    display: block;
   }
 
   .menu li {
