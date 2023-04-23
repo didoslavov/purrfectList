@@ -23,6 +23,7 @@ function onAddProduct() {
   clearListOnLoad();
   render();
   clearInputField();
+  inputElement.focus();
 }
 
 export { inputElement, ulElement };
