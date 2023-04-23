@@ -99,3 +99,105 @@ li {
   border: 1px solid rgb(112, 102, 102);
   border-radius: 10px;
 }
+
+/* Nav Bar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(216, 156, 66);
+  color: #fff;
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  user-select: none;
+}
+
+.menu-icon span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: rgb(112, 102, 102);
+  border-radius: 3px;
+  z-index: 1;
+}
+
+.menu-icon span:last-child {
+  margin-bottom: 0;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgb(251, 239, 227);
+  padding: 10px;
+  border-radius: 5px;
+  width: 320px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 10px;
+}
+
+.menu a {
+  color: rgb(112, 102, 102);
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.menu a:hover {
+  color: rgb(216, 156, 66);
+}
+
+@media screen and (max-width: 320px) {
+  .menu {
+    top: 70px;
+    right: -100%;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menu.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: center;
+    right: 0;
+  }
+
+  .menu li {
+    max-width: 100px;
+    margin-bottom: 10px;
+  }
+
+  .menu-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .menu-icon span {
+    background-color: #fff;
+  }
+}
