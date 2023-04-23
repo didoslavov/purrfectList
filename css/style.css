@@ -56,8 +56,7 @@ img {
 }
 
 #add-btn:hover {
-  background-color: rgb(226, 221, 144);
-  color: black;
+  color: rgb(112, 102, 102);
   cursor: pointer;
 }
 
@@ -138,6 +137,18 @@ nav {
   margin-bottom: 0;
 }
 
+.menu-icon.active span:first-child {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.active span:last-child {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
 .menu {
   display: none;
   position: absolute;
@@ -148,6 +159,18 @@ nav {
   margin-top: 3%;
   border-radius: 5px;
   width: 150px;
+  animation: flip 0.3s ease-in-out;
+}
+
+@keyframes flip {
+  0% {
+    opacity: 0;
+    transform: perspective(400px) rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(400px) rotateX(0deg);
+  }
 }
 
 .menu.active {
@@ -185,7 +208,7 @@ nav {
 
 @media screen and (max-width: 600px) {
   .menu {
-    top: 70px;
+    top: 30px;
     right: -100%;
     width: 100%;
     transition: all 0.3s ease-in-out;
