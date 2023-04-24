@@ -11,3 +11,5 @@ menuIcon.addEventListener('click', () => {
   menuIcon.classList.toggle('active');
   menu.classList.toggle('active');
 });
+
+// TO DO - HIDE MENU WHEN CLICK ANYWARE ON THE DOCUMENT
