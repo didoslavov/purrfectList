@@ -7,7 +7,7 @@ function boundRender(content) {
 }
 
 export default function decorateContext(ctx, next) {
-  ctx.render = boundRender();
+  ctx.render = boundRender;
 
   next();
 }
