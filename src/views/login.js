@@ -1,0 +1,36 @@
+import { login } from '../api/data.js';
+import { html } from '../lib.js';
+
+const loginTemplate = (onSubmit) => html` <div class="container">
+  <form @submit=${onSubmit}>
+    <input class="input-field" id="email" type="text" name="email" placeholder="Email" />
+    <input class="input-field" id="password" type="password" name="password" placeholder="Password" />
+    <button class="btn">Login</button>
+  </form>
+</div>`;
+
+export function loginPage(ctx) {
+  ctx.render(loginTemplate(onSubmit));
+
+  async function onSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const email = formData.get('email');
+    const password = formData.get('password');
+
+    try {
+      if (email == '' || password == '') {
+        throw new Error('All fields are required!');
+      }
+
+      //TO DO: Server side error hendling
+
+      await login(email, password);
+    } catch (error) {
+      alert(error.message);
+    }
+
+    ctx.page.redirect('/');
+  }
+}
