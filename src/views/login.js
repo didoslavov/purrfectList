@@ -3,8 +3,8 @@ import { html } from '../lib.js';
 
 const loginTemplate = (onSubmit) => html` <div class="container">
   <form @submit=${onSubmit}>
-    <input class="input-field" id="email" type="text" name="email" placeholder="Email" />
-    <input class="input-field" id="password" type="password" name="password" placeholder="Password" />
+    <input class="input-field" type="text" name="email" placeholder="Email" />
+    <input class="input-field" type="password" name="password" placeholder="Password" />
     <button class="btn">Login</button>
   </form>
 </div>`;
