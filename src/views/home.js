@@ -3,7 +3,7 @@ import { html, until } from '../lib.js';
 import { updateNavBar } from '../util.js';
 
 const homeTemplate = (promise, onAddProduct) => html` <div class="container">
-  <section id="homePage" class="sections">
+  <section class="sections">
     <img src="./public/cute-cat.png" alt="Cute Cat" />
     <form @submit=${onAddProduct}>
       <input type="text" name="product" class="input-field" placeholder="Add product" />
