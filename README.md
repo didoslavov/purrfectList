@@ -19,10 +19,6 @@
 
 [Try it here :)](https://purrfectlist.netlify.app/)
 
-### Preview
-
-![1681917637504](public/gitImg/preview.png)
-
 ### Description
 
 In this small project I'm using [back4app](https://www.back4app.com/) for the backend and [netlify](https://www.netlify.com/) to deploy app.
@@ -34,3 +30,8 @@ In this small project I'm using [back4app](https://www.back4app.com/) for the ba
 3. Async requests to the rest api.
 4. CRUD operations.
 5. Deploying the app in the web using netlify.
+
+### Preview
+
+![1681917637504](public/gitImg/preview.png) ![1681917637504](public/gitImg/loginPreview.png)
+![1681917637504](public/gitImg/registerPreview.png)
