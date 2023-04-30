@@ -40,6 +40,7 @@ export function regiisterPage(ctx) {
       alert(error.message);
     }
 
+    e.target.reset();
     updateNavBar();
     ctx.page.redirect('/');
   }

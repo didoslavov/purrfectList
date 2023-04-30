@@ -32,6 +32,7 @@ export function loginPage(ctx) {
       alert(error.message);
     }
 
+    e.target.reset();
     updateNavBar();
     ctx.page.redirect('/');
   }

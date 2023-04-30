@@ -46,7 +46,8 @@ export function homePage(ctx) {
         throw new Error('Please add product!');
       }
 
-      const res = await createProduct({ productName: product });
+      await createProduct({ productName: product });
+      e.target.reset();
       update();
     } catch (error) {
       alert(error.message);
