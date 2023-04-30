@@ -25,7 +25,7 @@ In this small project I'm using [back4app](https://www.back4app.com/) for the ba
 
 ### What I get from this project
 
-1. Seting up back4app environment.
+1. Setting up back4app environment.
 2. Use their rest api.
 3. Async requests to the rest api.
 4. CRUD operations.
