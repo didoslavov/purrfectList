@@ -31,7 +31,7 @@ img {
   font-weight: bold;
   color: rgb(112, 102, 102);
   background-color: rgb(255, 255, 255);
-  margin: 10px;
+  margin: auto;
   padding: 1em;
   border: 1px solid rgb(216, 156, 66);
   border-radius: 30px;
@@ -45,6 +45,9 @@ img {
 }
 
 .btn {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
   font-weight: bold;
