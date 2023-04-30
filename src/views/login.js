@@ -1,4 +1,4 @@
-import { login, logout } from '../api/data.js';
+import { login } from '../api/data.js';
 import { html } from '../lib.js';
 import { updateNavBar } from '../util.js';
 
