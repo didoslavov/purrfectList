@@ -64,7 +64,7 @@ img {
   font-family: 'Courier New', Courier, monospace;
   font-size: 14px;
   font-weight: bold;
-  background: salmon;
+  background: rgb(250, 128, 114);
   border: none;
   color: whitesmoke;
   border-radius: 10px;
@@ -97,6 +97,10 @@ li {
   padding: 0.7em;
   border: 1px solid rgb(112, 102, 102);
   border-radius: 10px;
+}
+
+li:hover {
+  background-color: rgba(250, 128, 114, 0.439);
 }
 
 /* Nav Bar */

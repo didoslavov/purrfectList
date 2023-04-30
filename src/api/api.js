@@ -54,7 +54,7 @@ export async function put(url, data) {
 }
 
 export async function del(url) {
-  return request(url, createOptions('del'));
+  return request(url, createOptions('delete'));
 }
 
 export async function login(username, password) {

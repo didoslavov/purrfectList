@@ -1,4 +1,4 @@
-import { createProduct, getProducts } from '../api/data.js';
+import { createProduct, deleteProduct, getProducts } from '../api/data.js';
 import { html, until } from '../lib.js';
 import { getUserData } from '../util.js';
 
@@ -15,10 +15,24 @@ const homeTemplate = (promise, onAddProduct) => html` <div class="container">
   </section>
 </div>`;
 
-const productTemplate = (product) => html`<li>${product.productName}</li>`;
+const productTemplate = (product, onDelete) => html`<li @click=${onDelete} data-id=${product.objectId}>${product.productName}</li>`;
+
+async function onDelete(e) {
+  const choice = confirm('Are you sure you want to delete this product?');
+
+  if (choice) {
+    const id = e.target.dataset.id;
+    const res = await deleteProduct(id);
+    e.target.remove();
+  }
+}
 
 export function homePage(ctx) {
-  ctx.render(homeTemplate(loadProducts(), onAddProduct));
+  update();
+
+  function update() {
+    ctx.render(homeTemplate(loadProducts(), onAddProduct));
+  }
 
   async function onAddProduct(e) {
     e.preventDefault();
@@ -31,7 +45,7 @@ export function homePage(ctx) {
       }
 
       const res = await createProduct({ productName: product });
-      ctx.page.redirect('/');
+      update();
     } catch (error) {
       alert(error.message);
     }
@@ -39,8 +53,8 @@ export function homePage(ctx) {
 }
 
 async function loadProducts() {
-  const userData = getUserData();
+  //TO DO: Load items for current user
   const products = (await getProducts()).results;
 
-  return products.map(productTemplate);
+  return products.map((p) => productTemplate(p, onDelete));
 }

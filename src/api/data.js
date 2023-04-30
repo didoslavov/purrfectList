@@ -8,6 +8,7 @@ export const logout = api.logout;
 const endpoinst = {
   allProducts: '/classes/Products',
   productById: '/classes/Products/',
+  deleteProduct: '/classes/Products/',
 };
 
 function createPointer(className, objectId) {
@@ -42,5 +43,5 @@ export async function updateProduct(id, product) {
 }
 
 export async function deleteProduct(id) {
-  return api.del(endpoinst.productById + id);
+  return api.del(endpoinst.deleteProduct + id);
 }
