@@ -1,6 +1,6 @@
 import { createProduct, deleteProduct, getProducts } from '../api/data.js';
 import { html, until } from '../lib.js';
-import { getUserData } from '../util.js';
+import { getUserData, updateNavBar } from '../util.js';
 
 const homeTemplate = (promise, onAddProduct) => html` <div class="container">
   <section id="homePage" class="sections">
@@ -16,6 +16,8 @@ const homeTemplate = (promise, onAddProduct) => html` <div class="container">
 </div>`;
 
 const productTemplate = (product, onDelete) => html`<li @click=${onDelete} data-id=${product.objectId}>${product.productName}</li>`;
+
+updateNavBar();
 
 async function onDelete(e) {
   const choice = confirm('Are you sure you want to delete this product?');

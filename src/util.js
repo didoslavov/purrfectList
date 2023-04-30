@@ -8,3 +8,15 @@ export function getUserData() {
 export function clearUserData() {
   localStorage.removeItem('userData');
 }
+
+export function updateNavBar() {
+  const userData = getUserData();
+
+  if (userData) {
+    document.querySelector('.user').style.display = 'block';
+    document.querySelector('.guest').style.display = 'none';
+  } else {
+    document.querySelector('.user').style.display = 'none';
+    document.querySelector('.guest').style.display = 'block';
+  }
+}

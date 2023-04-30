@@ -1,5 +1,6 @@
 import { login } from '../api/data.js';
 import { html } from '../lib.js';
+import { updateNavBar } from '../util.js';
 
 const loginTemplate = (onSubmit) => html` <div class="container">
   <form @submit=${onSubmit}>
@@ -31,6 +32,7 @@ export function loginPage(ctx) {
       alert(error.message);
     }
 
+    updateNavBar();
     ctx.page.redirect('/');
   }
 }
