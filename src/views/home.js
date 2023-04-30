@@ -1,6 +1,6 @@
 import { createProduct, deleteProduct, getProducts } from '../api/data.js';
 import { html, until } from '../lib.js';
-import { getUserData, updateNavBar } from '../util.js';
+import { updateNavBar } from '../util.js';
 
 const homeTemplate = (promise, onAddProduct) => html` <div class="container">
   <section id="homePage" class="sections">

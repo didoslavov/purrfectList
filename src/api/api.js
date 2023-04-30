@@ -86,6 +86,6 @@ export async function register(username, email, password) {
 }
 
 export async function logout() {
-  await post('/logout');
   clearUserData();
+  await post('/logout');
 }
