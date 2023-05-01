@@ -34,8 +34,6 @@ export function regiisterPage(ctx) {
         throw new Error("Passwords don't match!");
       }
 
-      //TO DO: Server side error hendling
-
       await register(username, email, password);
     } catch (error) {
       alert(error.message);

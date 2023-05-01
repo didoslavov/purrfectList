@@ -1,4 +1,3 @@
-// DON'T FORGET TO CHANGE SEQURITY SETTINGS IN DATABASE LATER !!!
 import { logout } from './api/data.js';
 import { page } from './lib.js';
 import decorateContext from './middlewares/render.js';

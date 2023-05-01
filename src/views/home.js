@@ -34,15 +34,13 @@ export function homePage(ctx) {
         throw new Error('All fields are required!');
       }
 
-      //TO DO: Server side error hendling
-
       await createList({ listName });
+
+      e.target.reset();
+      ctx.page.redirect('/my-lists');
     } catch (error) {
       alert(error.message);
     }
-
-    e.target.reset();
-    ctx.page.redirect('/my-lists');
   }
 }
 
