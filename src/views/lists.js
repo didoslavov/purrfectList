@@ -8,22 +8,23 @@ const listsTempalte = (promise) => html` <div class="container">
   </ul>
 </div>`;
 
-const listTemplate = (list, onClick) => html`<li @click=${onClick} data-owner=${list.owner.objectId} data-id=${list.objectId}>${list.listName}</li>`;
+const listTemplate = (list, onClick) =>
+  html`<li @click=${() => onClick(list.objectId)} data-owner=${list.owner.objectId} data-id=${list.objectId}>${list.listName}</li>`;
 
 export function listsPage(ctx) {
   ctx.render(listsTempalte(loadLists()));
-}
 
-async function loadLists() {
-  //TO DO: Load items for current user
-  const userData = getUserData();
-  const ownerId = userData.id;
+  async function loadLists() {
+    //TO DO: Load items for current user
+    const userData = getUserData();
+    const ownerId = userData.id;
 
-  const lists = (await getUserLists()).results;
+    const lists = (await getUserLists()).results;
 
-  return lists.filter((l) => l.owner.objectId == ownerId).map((p) => listTemplate(p, onClick));
-}
+    return lists.filter((l) => l.owner.objectId == ownerId).map((p) => listTemplate(p, onClick));
 
-async function onClick(e) {
-  console.log(e.target);
+    async function onClick(id) {
+      ctx.page.redirect('/my-lists/' + id);
+    }
+  }
 }

@@ -30,6 +30,6 @@ export function createPage(ctx) {
     }
 
     e.target.reset();
-    ctx.page.redirect('/');
+    ctx.page.redirect('/my-lists');
   }
 }
