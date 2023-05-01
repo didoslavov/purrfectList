@@ -1,63 +1,60 @@
-import { createProduct, deleteProduct, getProducts } from '../api/data.js';
+import { getUserLists, createList } from '../api/data.js';
 import { html, until } from '../lib.js';
-import { updateNavBar } from '../util.js';
+import { getUserData, updateNavBar } from '../util.js';
 
-const homeTemplate = (promise, onAddProduct) => html` <div class="container">
-  <section class="sections">
-    <img src="./public/cute-cat.png" alt="Cute Cat" />
-    <form @submit=${onAddProduct}>
-      <input type="text" name="product" class="input-field" placeholder="Add product" />
-      <button class="btn">Add Product</button>
-    </form>
-    <ul id="product-list">
-      ${until(promise, html`<li>Loading &hellip;</li>`)}
-    </ul>
-  </section>
+const homeTemplate = (promise, onSubmit) => html` <div class="container">
+  <form @submit=${onSubmit}>
+    <input class="input-field" type="text" name="listName" placeholder="Add list name" />
+    <button class="btn">Create</button>
+  </form>
+  <ul id="product-list">
+    ${until(promise, html`<li>Loading &hellip;</li>`)}
+  </ul>
 </div>`;
 
-const productTemplate = (product, onDelete) => html`<li @click=${onDelete} data-id=${product.objectId}>${product.productName}</li>`;
+const listsTemplate = (list, onDelete) => html`<li @click=${onDelete} data-id=${list.objectId}>${list.listName}</li>`;
 
 updateNavBar();
-
-async function onDelete(e) {
-  const choice = confirm('Are you sure you want to delete this product?');
-
-  if (choice) {
-    const id = e.target.dataset.id;
-    const res = await deleteProduct(id);
-    e.target.remove();
-  }
-}
 
 export function homePage(ctx) {
   update();
 
   function update() {
-    ctx.render(homeTemplate(loadProducts(), onAddProduct));
+    ctx.render(homeTemplate(loadLists(), onSubmit));
   }
 
-  async function onAddProduct(e) {
+  async function onSubmit(e) {
     e.preventDefault();
 
-    const product = new FormData(e.target).get('product');
+    const listName = new FormData(e.target).get('listName');
 
     try {
-      if (product == '') {
-        throw new Error('Please add product!');
+      if (listName == '') {
+        throw new Error('All fields are required!');
       }
 
-      await createProduct({ productName: product });
-      e.target.reset();
-      update();
+      //TO DO: Server side error hendling
+
+      await createList({ listName });
     } catch (error) {
       alert(error.message);
     }
+
+    e.target.reset();
+    ctx.page.redirect('/my-lists');
   }
 }
 
-async function loadProducts() {
+async function loadLists() {
   //TO DO: Load items for current user
-  const products = (await getProducts()).results;
+  const userData = getUserData();
+  const ownerId = userData.id;
 
-  return products.map((p) => productTemplate(p, onDelete));
+  const lists = (await getUserLists()).results;
+
+  return lists.filter((l) => l.owner.objectId == ownerId).map((p) => listsTemplate(p, onClick));
+
+  async function onClick(id) {
+    ctx.page.redirect('/my-lists/' + id);
+  }
 }
