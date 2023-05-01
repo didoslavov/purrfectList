@@ -6,6 +6,10 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
+body {
+  height: 100vh;
+}
+
 .sections {
   text-align: center;
   display: flex;
@@ -156,6 +160,32 @@ li:hover {
   height: auto;
   border: 1.5px solid rgb(112, 102, 102);
   border-radius: 100px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 40px;
+  width: 100%;
+  background-color: rgb(216, 156, 66);
+  color: #fff;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.footer img {
+  display: flex;
+  margin: auto;
+  width: 50px;
+  margin-right: 50px;
+}
+
+.footer span {
+  color: rgb(112, 102, 102);
+  display: flex;
 }
 
 @media (max-width: 600px) {
