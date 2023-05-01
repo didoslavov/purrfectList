@@ -1,4 +1,4 @@
-import { createProduct, deleteProduct, getListById, getProducts } from '../api/data.js';
+import { createProduct, deleteProduct, getProductsById } from '../api/data.js';
 import { html, until } from '../lib.js';
 import { updateNavBar } from '../util.js';
 
@@ -33,7 +33,7 @@ export function privateListPage(ctx) {
   update();
 
   function update() {
-    ctx.render(privateListTemplate(loadProducts(), onAddProduct));
+    ctx.render(privateListTemplate(loadCurrentListProducts(ctx.params.id), onAddProduct));
   }
 
   async function onAddProduct(e) {
@@ -55,9 +55,8 @@ export function privateListPage(ctx) {
   }
 }
 
-async function loadProducts() {
-  //TO DO: Load items for current user
-  const products = (await getProducts()).results;
+async function loadCurrentListProducts(listId) {
+  const products = (await getProductsById(listId)).results;
 
   return products.map((p) => productTemplate(p, onDelete));
 }

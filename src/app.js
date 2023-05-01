@@ -11,7 +11,7 @@ import { privateListPage } from './views/privateList.js';
 import { regiisterPage } from './views/register.js';
 
 page(decorateContext);
-page('/', homePage);
+page('/', listsPage);
 page('/login', loginPage);
 page('/register', regiisterPage);
 page('/create', createPage);

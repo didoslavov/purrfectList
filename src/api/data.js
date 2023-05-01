@@ -8,11 +8,20 @@ export const logout = api.logout;
 const endpoinst = {
   allProducts: '/classes/Products',
   userLists: '/classes/Lists',
-  productsByListId: '/classes/Products/',
+  productsByListId: (listId) => `/classes/Products?where=${createPointerQuery('list', 'Lists', listId)}`,
   listById: '/classes/Lists/',
   deleteProduct: '/classes/Products/',
+  updateProduct: '/classes/Products',
   createList: '/classes/Lists',
 };
+
+function createQuery(query) {
+  return encodeURIComponent(JSON.stringify(query));
+}
+
+function createPointerQuery(propName, className, objectId) {
+  return createQuery({ [propName]: createPointer(className, objectId) });
+}
 
 function createPointer(className, objectId) {
   return {
@@ -21,8 +30,6 @@ function createPointer(className, objectId) {
     objectId,
   };
 }
-
-function addList(record) {}
 
 function addOwner(record) {
   const { id } = getUserData();
@@ -43,8 +50,8 @@ export async function getProducts() {
   return api.get(endpoinst.allProducts);
 }
 
-export async function getProductById(id) {
-  return api.get(endpoinst.productsByListId + id);
+export async function getProductsById(id) {
+  return api.get(endpoinst.productsByListId(id));
 }
 
 export async function createProduct(product, listId) {
@@ -55,7 +62,7 @@ export async function createProduct(product, listId) {
 }
 
 export async function updateProduct(id, product) {
-  return api.put(endpoinst.productsByListId + id, product);
+  return api.put(endpoinst.updateProduct + id, product);
 }
 
 export async function deleteProduct(id) {
@@ -63,7 +70,7 @@ export async function deleteProduct(id) {
 }
 
 export async function createList(list) {
-  createPointer(list);
+  addOwner(list);
 
   return api.post(endpoinst.createList, list);
 }
