@@ -16,7 +16,6 @@ export function listsPage(ctx) {
   ctx.render(listsTempalte(loadLists()));
 
   async function loadLists() {
-    //TO DO: Load items for current user
     const userData = getUserData();
     const ownerId = userData.id;
 

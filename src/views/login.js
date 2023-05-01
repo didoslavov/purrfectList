@@ -5,7 +5,7 @@ import { updateNavBar } from '../util.js';
 const loginTemplate = (onSubmit) => html` <div class="container">
   <img src="../public/login-cat.png" alt="login-cat" />
   <form @submit=${onSubmit}>
-    <input class="input-field" type="text" name="email" placeholder="Username" />
+    <input class="input-field" type="text" name="username" placeholder="Username" />
     <input class="input-field" type="password" name="password" placeholder="Password" />
     <button class="btn">Login</button>
   </form>
@@ -18,17 +18,15 @@ export function loginPage(ctx) {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const email = formData.get('email');
+    const username = formData.get('username');
     const password = formData.get('password');
 
     try {
-      if (email == '' || password == '') {
+      if (username == '' || password == '') {
         throw new Error('All fields are required!');
       }
 
-      //TO DO: Server side error hendling
-
-      await login(email, password);
+      await login(username, password);
     } catch (error) {
       alert(error.message);
     }
