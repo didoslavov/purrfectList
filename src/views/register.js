@@ -3,6 +3,7 @@ import { html } from '../lib.js';
 import { updateNavBar } from '../util.js';
 
 const regiisterTemplate = (onSubmit) => html` <div class="container">
+  <img src="../public/register-cat.png" alt="register-cat" />
   <form @submit=${onSubmit}>
     <input class="input-field" type="text" name="username" placeholder="Username" />
     <input class="input-field" type="text" name="email" placeholder="Email" />

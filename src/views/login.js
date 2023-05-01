@@ -3,6 +3,7 @@ import { html } from '../lib.js';
 import { updateNavBar } from '../util.js';
 
 const loginTemplate = (onSubmit) => html` <div class="container">
+  <img src="../public/login-cat.png" alt="login-cat" />
   <form @submit=${onSubmit}>
     <input class="input-field" type="text" name="email" placeholder="Username" />
     <input class="input-field" type="password" name="password" placeholder="Password" />

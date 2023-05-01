@@ -3,6 +3,7 @@ import { html, until } from '../lib.js';
 import { getUserData, updateNavBar } from '../util.js';
 
 const homeTemplate = (promise, onSubmit) => html` <div class="container">
+  <img src="../public/cute-cat.png" alt="cute-cat" />
   <form @submit=${onSubmit}>
     <input class="input-field" type="text" name="listName" placeholder="Add list name" />
     <button class="btn">Create</button>
@@ -12,7 +13,7 @@ const homeTemplate = (promise, onSubmit) => html` <div class="container">
   </ul>
 </div>`;
 
-const listsTemplate = (list, onDelete) => html`<li @click=${onDelete} data-id=${list.objectId}>${list.listName}</li>`;
+const listsTemplate = (list, onDelete) => html`<li @click=${onDelete} class="list" data-id=${list.objectId}>${list.listName}</li>`;
 
 updateNavBar();
 
@@ -20,7 +21,7 @@ export function homePage(ctx) {
   update();
 
   function update() {
-    ctx.render(homeTemplate(loadLists(), onSubmit));
+    ctx.render(homeTemplate(loadLists(ctx), onSubmit));
   }
 
   async function onSubmit(e) {
@@ -45,14 +46,17 @@ export function homePage(ctx) {
   }
 }
 
-async function loadLists() {
-  //TO DO: Load items for current user
+async function loadLists(ctx) {
   const userData = getUserData();
-  const ownerId = userData.id;
 
-  const lists = (await getUserLists()).results;
+  if (userData) {
+    const ownerId = userData.id;
+    const lists = (await getUserLists()).results;
 
-  return lists.filter((l) => l.owner.objectId == ownerId).map((p) => listsTemplate(p, onClick));
+    return lists.filter((l) => l.owner.objectId == ownerId).map((p) => listsTemplate(p, onClick));
+  } else {
+    ctx.page.redirect('/login');
+  }
 
   async function onClick(id) {
     ctx.page.redirect('/my-lists/' + id);
