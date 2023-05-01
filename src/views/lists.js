@@ -1,5 +1,6 @@
 import { getUserLists } from '../api/data.js';
 import { html, until } from '../lib.js';
+import { getUserData } from '../util.js';
 
 const listsTempalte = (promise) => html` <div class="container">
   <ul id="product-list">
@@ -7,7 +8,7 @@ const listsTempalte = (promise) => html` <div class="container">
   </ul>
 </div>`;
 
-const listTemplate = (list, onClick) => html`<li @click=${onClick} data-id=${list.objectId}>${list.listName}</li>`;
+const listTemplate = (list, onClick) => html`<li @click=${onClick} data-owner=${list.owner.objectId} data-id=${list.objectId}>${list.listName}</li>`;
 
 export function listsPage(ctx) {
   ctx.render(listsTempalte(loadLists()));
@@ -15,10 +16,14 @@ export function listsPage(ctx) {
 
 async function loadLists() {
   //TO DO: Load items for current user
+  const userData = getUserData();
+  const ownerId = userData.id;
+
   const lists = (await getUserLists()).results;
-  return lists.map((p) => listTemplate(p, onClick));
+
+  return lists.filter((l) => l.owner.objectId == ownerId).map((p) => listTemplate(p, onClick));
 }
 
-async function onClick(id) {
-  console.log(id);
+async function onClick(e) {
+  console.log(e.target);
 }
